@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+
+  <link rel="preload" href="assets/fonts/HankenGrotesk-VariableFont_wght.ttf" as="font" type="font/wght" crossorigin="">
+  
+  <title>Frontend Mentor | Results summary component</title>
+  <style>
+    :root {
+      /* ### Primary */
+      --Light-red: hsl(0, 100%, 67%);
+      --Orangey-yellow: hsl(39, 100%, 56%);
+      --Green-teal: hsla(166, 100%, 37%, 0.952);
+      --Cobalt-blue: hsla(234, 85%, 45%, 0.925);
+      /* ## Gradients */
+      /* background */
+      --Light-slate-blue : hsl(252, 100%, 67%);
+      --Light-royal-blue : hsl(241, 81%, 54%);
+      /* circle */
+      --Violet-blue: hsla(256, 72%, 46%, .5);
+      --Persian-blue: hsla(241, 72%, 46%, 0.5);
+      /* ### Neutral */
+      --White: hsl(0, 0%, 100%);
+      --Pale-blue: hsl(221, 100%, 96%);
+      --Light-lavender: hsl(241, 100%, 89%);
+      --Dark-gray-blue: hsl(224, 30%, 27%);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    @font-face {
+      font-family: "hanken";
+      src: url("assets/fonts/HankenGrotesk-VariableFont_wght.ttf");
+    }
+    body {
+      font-family: "hanken";
+      background-color: var(--Pale-blue);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    @media(max-width: 375px) {
+      .container {
+        grid-template-columns: 1fr !important;
+      }
+      .container .yourResult,
+      .container .summary {
+        gap: 10px !important;
+      }
+      .container .summary {
+        padding: 20px !important;
+      }
+      .container .yourResult {
+        margin-top: -40px;
+      }
+      .container .yourResult .score {
+        width: 120px !important;
+        height: 120px !important;
+      }
+      .container .yourResult .score div {
+        font-size: 40px !important;
+      }
+    }
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: 600px;
+      background-color: var(--White);
+      border-radius: 20px;
+      background-image: linear-gradient(var(--Pale-blue), var(--White)) ;
+    }
+    .container .yourResult {
+      background-image: linear-gradient( var(--Light-slate-blue), var(--Light-royal-blue));
+      border-radius: 20px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .container .yourResult h4 {
+      color: var(--Light-lavender);
+    }
+    .container .yourResult .score {
+      width: 150px;
+      height: 150px;
+      background-color: transparent;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-image: linear-gradient(var(--Persian-blue), var(--Violet-blue));
+    }
+    .container .yourResult .score div {
+      font-size: 50px;
+      font-weight: 800;
+      color: var(--White);
+    }
+    .container .yourResult .score span {
+      font-size: 12px;
+      color: var(--Light-lavender);
+    }
+    .container .yourResult h3 {
+      color: var(--White);
+    }
+    .container .yourResult p {
+      text-align: center;
+      color: var(--Light-lavender);
+    }
+    .container .summary {
+      display: flex;
+      flex-direction: column;
+      padding: 40px;
+      border-radius: 20px;
+      gap: 20px;
+    }
+    .container .summary .data {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .container .summary .data .box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .container .summary .data .box {
+      padding: 15px;
+      border-radius: 10px;
+    }
+    .container .summary .data .box .s1 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .container .summary .data .box .s1 span {
+      font-weight: 700;
+    }
+    .container .summary .data .box .s2 div {
+      font-weight: 700;
+    }
+    .container .summary .data .box .s2 div span {
+      font-weight: normal;
+      color: #777;
+    }
+    .container .summary .data .box:nth-child(1) {
+      background-color: hsla(0, 100%, 67%, 0.05);
+    }
+    .container .summary .data .box:nth-child(1) .s1 span {
+      color: hsla(0, 100%, 67%, 0.8);
+    }
+    .container .summary .data .box:nth-child(2) {
+      background-color: hsla(39, 100%, 56%,0.05);
+    }
+    .container .summary .data .box:nth-child(2) .s1 span {
+      color: hsla(39, 100%, 56%,.8);
+    }
+    .container .summary .data .box:nth-child(3) {
+      background-color: hsla(166, 100%, 37%, 0.05);
+    }
+    .container .summary .data .box:nth-child(3) .s1 span {
+      color: hsla(166, 100%, 37%, 0.8);
+    }
+    .container .summary .data .box:nth-child(4) {
+      background-color: hsla(234, 85%, 45%, 0.05);
+    }
+    .container .summary .data .box:nth-child(4) .s1 span {
+      color: hsla(234, 85%, 45%, 0.8);
+    }
+    .container .summary button {
+      border-radius: 20px;
+      border: 0;
+      outline: 0;
+      padding: 10px;
+      color: var(--White);
+      background-color: var(--Dark-gray-blue);
+      cursor: pointer;
+    }
+    .container .summary button:hover {
+      background-image: linear-gradient( var(--Light-slate-blue), var(--Light-royal-blue));
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="yourResult">
+      <h4>Your Result</h4>
+      <div class="score">
+        <div>76</div>
+        <span>of 100</span>
+      </div>
+      <h3>Great</h3>
+      <p>You scored higher than 65% of the people who have taken these tests.</p>
+    </div>
+    <div class="summary">
+      <h3>Summary</h3>
+      <div class="data">
+        <div class="box">
+          <div class="s1">
+            <img src="assets/images/icon-reaction.svg">
+            <span>Reaction</span>
+          </div>
+          <div class="s2">
+            <div>80 <span>/100</span></div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="s1">
+            <img src="assets/images/icon-memory.svg">
+            <span>Memory</span>
+          </div>
+          <div class="s2">
+            <div>92 <span>/100</span></div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="s1">
+            <img src="assets/images/icon-verbal.svg">
+            <span>Verbal</span>
+          </div>
+          <div class="s2">
+            <div>61 <span>/100</span></div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="s1">
+            <img src="assets/images/icon-visual.svg">
+            <span>Visual</span>
+          </div>
+          <div class="s2">
+            <div>72 <span>/100</span></div>
+          </div>
+        </div>
+      </div>
+      <button>Continue</button>
+    </div>
+  </div>
+</body>
+</html>
