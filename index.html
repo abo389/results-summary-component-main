@@ -6,7 +6,7 @@
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
 
-  <link rel="preload" href="assets/fonts/HankenGrotesk-VariableFont_wght.ttf" as="font" type="font/wght" crossorigin="">
+  <link rel="preload" href="assets/fonts/HankenGrotesk-VariableFont_wght.ttf" as="font" type="font/wght" crossorigin>
   
   <title>Frontend Mentor | Results summary component</title>
   <style>
@@ -45,8 +45,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      background-color: var(--Pale-blue);
     }
-    @media(max-width: 375px) {
+    @media screen and (max-width: 375px) {
       .container {
         grid-template-columns: 1fr !important;
       }
@@ -55,10 +56,12 @@
         gap: 10px !important;
       }
       .container .summary {
-        padding: 20px !important;
+        padding: 30px !important;
       }
       .container .yourResult {
-        margin-top: -40px;
+        margin-top: -10px;
+        border-top-left-radius: 0 !important;
+        border-top-right-radius: 0 !important;
       }
       .container .yourResult .score {
         width: 120px !important;
@@ -75,6 +78,7 @@
       background-color: var(--White);
       border-radius: 20px;
       background-image: linear-gradient(var(--Pale-blue), var(--White)) ;
+      box-shadow: 2px 2px 20px 0 rgba(0, 0, 0, 0.1)
     }
     .container .yourResult {
       background-image: linear-gradient( var(--Light-slate-blue), var(--Light-royal-blue));
